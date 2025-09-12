@@ -4,7 +4,7 @@ import ProductData from "./ProductData.mjs";
 const dataSource = new ProductData("tents");
 
 function addProductToCart(product) {
-   // Get the existing cart from localStorage, or use an empty array
+  // Get the existing cart from localStorage, or use an empty array
   let cart = getLocalStorage("so-cart") || [];
   // Add the new product
   cart.push(product);
