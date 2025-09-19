@@ -26,6 +26,9 @@ export default class ProductDetails {
     const cartItems = getLocalStorage("so-cart") || [];
     cartItems.push(this.product);
     setLocalStorage("so-cart", cartItems);
+
+    //alert the user
+     alert(`${this.product.NameWithoutBrand} added to cart!`);
   }
 
   renderProductDetails() {
