@@ -1,6 +1,7 @@
 import { setLocalStorage, getLocalStorage } from "./utils.mjs";
 
 export default class ProductDetails {
+
   constructor(productId, dataSource) {
     this.productId = productId;
     this.product = {};
@@ -32,18 +33,29 @@ export default class ProductDetails {
   }
 
   renderProductDetails() {
-    document.getElementById("productBrand").textContent =
-      this.product.Brand.Name;
-    document.getElementById("productName").textContent =
-      this.product.NameWithoutBrand;
-    document.getElementById("productImage").src = this.product.Image;
-    document.getElementById("productImage").alt = this.product.NameWithoutBrand;
-    document.getElementById("productPrice").textContent =
-      `$${this.product.FinalPrice}`;
-    document.getElementById("productColor").textContent =
-      this.product.Colors[0].ColorName;
-    document.getElementById("productDesc").innerHTML =
-      this.product.DescriptionHtmlSimple;
-    document.getElementById("addToCart").dataset.id = this.product.Id;
+    if (this.product && this.product.Id) {
+      productDetailsTemplate(this.product);
+    } else {
+      console.warn("Product not found!");
+    }
   }
+}
+
+function productDetailsTemplate(product) {
+  document.querySelector("h2").textContent = product.Category.charAt(0).toUpperCase() + product.Category.slice(1);
+  document.querySelector("#p-brand").textContent = product.Brand.Name;
+  document.querySelector("#p-name").textContent = product.NameWithoutBrand;
+
+  const productImage = document.querySelector("#p-image");
+  productImage.src = product.Images.PrimaryExtraLarge;
+  productImage.alt = product.NameWithoutBrand;
+  const euroPrice = new Intl.NumberFormat('de-DE',
+    {
+      style: 'currency', currency: 'EUR',
+    }).format(Number(product.FinalPrice) * 0.85);
+  document.querySelector("#p-price").textContent = `${euroPrice}`;
+  document.querySelector("#p-color").textContent = product.Colors[0].ColorName;
+  document.querySelector("#p-description").innerHTML = product.DescriptionHtmlSimple;
+
+  document.querySelector("#add-to-cart").dataset.id = product.Id;
 }

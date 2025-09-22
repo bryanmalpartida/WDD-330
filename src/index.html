@@ -1,27 +1,31 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sleep Outside | Home</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <script src="js/main.js" type="module"></script>
+</head>
+
 <body>
   <header class="divider">
-    <div class="logo">
-      <img src="/images/noun_Tent_2517.svg" alt="tent image for logo" />
-      <a href="index.html"> Sleep<span class="highlight">Outside</span></a>
-    </div>
-    <div class="cart">
-      <a href="cart/index.html">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-          <!-- SVG content omitted for simplicity -->
-        </svg>
-        <!-- item counter -->
-        <span id="cartCount" class="cart-count">0</span>
-      </a>
-    </div>
-  </header>
-
+      <div class="logo">
+        <img src="/images/noun_Tent_2517.svg" alt="tent image for logo" />
+        <a href="/index.html"> Sleep<span class="highlight">Outside</span></a>
+      </div>
+      <div class="cart">
+        <a href="cart/index.html">
+          <img src="/images/noun_Backpack_65884.svg" alt="shopping cart" />
+          <span class="cart__count">" " </span>
+        </a>
+      </div>
+    </header>
   <main class="divider">
     <div class="hero">
-      <img
-        src="/images/banner-sm.jpg"
-        srcset="images/banner-sm.jpg 500w, images/banner.jpg"
-        alt="image of a high mountain lake"
-      />
+      <img src="/images/banner-sm.jpg" srcset="images/banner-sm.jpg 500w, images/banner.jpg"
+        alt="image of a high mountain lake" />
       <div class="logo logo--square">
         <img src="/images/noun_Tent_2517.svg" alt="tent image for logo" />
         <div>Sleep<span class="highlight">Outside</span></div>
@@ -35,25 +39,36 @@
     </div>
 
     <section class="products">
-      <h2>Top Products</h2>
-      <ul class="product-list">
-        <!-- Here are the products  -->
+      <ul class="product-grid">
+        <li>
+          <a href="/product_listing/index.html?category=tents">
+            <img src="images/categories/category-tents.svg" alt="Tents">
+            <h2>Tents</h2>
+          </a>
+        </li>
+        <li>
+          <a href="/product_listing/index.html?category=backpacks">
+            <img src="images/categories/category-backpacks.svg" alt="Backpacks">
+            <h2>Backpacks</h2>
+          </a>
+        </li>
+        <li>
+          <a href="/product_listing/index.html?category=sleeping-bags">
+            <img src="images/categories/category-sleepingbags.svg" alt="Sleeping Bags">
+            <h2>Sleeping Bags</h2>
+          </a>
+        </li>
+        <li>
+          <a href="/product_listing/index.html?category=hammocks">
+            <img src="images/categories/category-hammocks.svg" alt="Hammocks">
+            <h2>Hammocks</h2>
+          </a>
+        </li>
       </ul>
     </section>
   </main>
-
-  <footer>
-    &copy;2025 ⛺ SleepOutside ⛺ WDD 330 ⛺ BYU-Idaho for BYU-Pathway Worldwide Online
-  </footer>
-
-  <!-- *NEW*: script to update the counter -->
-  <script type="module">
-    import { getCartCount } from "./js/utils.mjs";
-
-    // This updates the number of items in the cart.
-    const cartCount = document.getElementById("cartCount");
-    if (cartCount) {
-      cartCount.textContent = getCartCount();
-    }
-  </script>
+  <footer id="main-footer"></footer>
 </body>
+
+</html>
+
