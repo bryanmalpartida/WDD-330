@@ -1,6 +1,6 @@
 import ProductData from './ProductData.mjs';
 import ProductList from './ProductList.mjs';
-import { loadHeaderFooter, getParam } from './utils.mjs';
+import { loadHeaderFooter, getParam, updateCartCount} from './utils.mjs';
 
 loadHeaderFooter();
 
@@ -10,3 +10,4 @@ const element = document.querySelector(".product-list");
 const listing = new ProductList(category, dataSource, element);
 
 listing.init();
+document.addEventListener("DOMContentLoaded", updateCartCount);

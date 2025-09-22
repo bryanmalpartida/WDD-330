@@ -3,17 +3,17 @@ export function qs(selector, parent = document) {
   return parent.querySelector(selector);
 }
 
-// retrieve data from localstorage
+// retrieves data from localstorage
 export function getLocalStorage(key) {
   return JSON.parse(localStorage.getItem(key));
 }
 
-// save data to local storage
+// saves data to local storage
 export function setLocalStorage(key, data) {
   localStorage.setItem(key, JSON.stringify(data));
 }
 
-// set a listener for both touchend and click
+// sets a listener for both touchend and click
 export function setClick(selector, callback) {
   qs(selector).addEventListener("touchend", (event) => {
     event.preventDefault();
@@ -59,14 +59,20 @@ export async function loadHeaderFooter() {
   const headerElement = document.querySelector("#main-header");
   const footerElement = document.querySelector("#main-footer");
 
-  if (headerElement) renderWithTemplate(headerTemplate, headerElement);
-  if (footerElement) renderWithTemplate(footerTemplate, footerElement);
+  renderWithTemplate(headerTemplate, headerElement);
+  renderWithTemplate(footerTemplate, footerElement);
+  updateCartCount();
 }
 
 
-// get total number of items in the cart
-export function getCartCount() {
+
+export function updateCartCount() {
   const cartItems = getLocalStorage("so-cart") || [];
-  return cartItems.length;
+  const count = cartItems.reduce((sum, item) => sum + (item.Quantity || 1), 0);
+
+  const countElement = document.querySelector(".cart__count");
+  if (countElement) {
+    countElement.textContent = count;
+  }
 }
 

@@ -123,10 +123,36 @@ button {
 
 /* Cart icon styles */
 .cart {
-  padding-top: 1em;
-  position: relative;
-  text-align: center;
+  position: relative;   /* needed for bubble positioning */
+  display: inline-block;
+  width: 32px;          /* set a fixed size for the icon wrapper */
+  height: 32px;
 }
+
+.cart img {
+  width: 100%;          /* scale the image properly */
+  height: auto;
+  display: block;
+}
+
+.cart__count {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background-color: red;
+  color: white;
+  font-size: 0.7rem;
+  font-weight: bold;
+  border-radius: 50%;
+  min-width: 18px;
+  height: 18px;
+  padding: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
 
 .cart svg {
   width: 25px;
@@ -187,6 +213,7 @@ button {
 .product-list {
   display: flex;
   flex-flow: row wrap;
+  flex-direction: column;
   list-style-type: none;
   align-items: stretch;
 }
@@ -197,6 +224,32 @@ button {
 }
 
 /* Styles for product lists */
+
+.cart-card {
+  display: flex;
+  flex-direction: row; 
+  align-items: flex-start;
+  padding: 1rem 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.cart-card__image img {
+  width: 120px;
+  height: auto;
+  object-fit: cover;
+  margin-right: 1rem;
+}
+
+.cart-card h2 {
+  margin: 0 0 0.5rem;
+}
+
+.cart-footer {
+  display: flex;
+  justify-content: flex-end;
+  font-weight: bold;
+  margin-top: 1rem;
+}
 .product-card {
   flex: 1 1 100%;
   margin: 0.25em;
