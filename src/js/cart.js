@@ -1,4 +1,4 @@
-import { getLocalStorage } from "./utils.mjs";
+import { getLocalStorage, loadHeaderFooter } from "./utils.mjs";
 
 const cartItems = getLocalStorage("so-cart") || [];
 
@@ -6,11 +6,11 @@ function renderCartContents() {
   if (cartItems.length === 0) {
     document.querySelector(".product-list").innerHTML = "<p>Your cart is empty.</p>";
 
-    // Hide the footer if it exists
+    // Hides the footer if it exists
     const footer = document.querySelector(".cart-footer");
     if (footer) footer.classList.add("hide");
 
-    // Reset completely if it exists
+    // Resets completely if it exists
     const total = document.querySelector(".cart-total");
     if (total) total.textContent = "";
 
@@ -50,17 +50,18 @@ function cartItemTemplate(newItem) {
   return `<li class='cart-card divider'>
     <a href='#' class='cart-card__image'>
       <img
-        src='${newItem.Image}'
-        alt='${newItem.Name}'
+        src='${newItem.Image || "/images/placeholder.png"}'
+        alt='${newItem.Name || "Unnamed product"}'
       />
-   </a>
-    <a href='#'>
-      <h2 class='card__name'>${newItem.Name}</h2>
     </a>
-    <p class='cart-card__color'>${newItem.Colors[0].ColorName}</p>
-    <p class='cart-card__quantity'>Quantity: ${newItem.Quantity} </p>
-    <p class='cart-card__price'>$${newItem.TotalPrice.toFixed(2)}</p>
+    <a href='#'>
+      <h2 class='card__name'>${newItem.Name || "Unknown"}</h2>
+    </a>
+    <p class='cart-card__color'>${newItem.Colors?.[0]?.ColorName || "N/A"}</p>
+    <p class='cart-card__quantity'>Quantity: ${newItem.Quantity || 1}</p>
+    <p class='cart-card__price'>$${(newItem.TotalPrice || 0).toFixed(2)}</p>
   </li>`;
 }
 
 renderCartContents();
+loadHeaderFooter();
