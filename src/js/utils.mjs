@@ -29,6 +29,7 @@ export function getParam(param) {
   return urlParams.get(param);
 }
 
+
 export function renderListWithTemplate(template, parentElement, list, position = "afterbegin", clear = false) {
   const htmlStrings = list.map(template);
   // if clear is true we need to clear out the contents of the parent.
@@ -61,6 +62,7 @@ export async function loadHeaderFooter() {
   renderWithTemplate(headerTemplate, headerElement);
   renderWithTemplate(footerTemplate, footerElement);
 }
+
 
 // get total number of items in the cart
 export function getCartCount() {
