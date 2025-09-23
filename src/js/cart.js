@@ -4,7 +4,7 @@ const cartItems = getLocalStorage("so-cart") || [];
 
 function renderCartContents() {
   if (cartItems.length === 0) {
-    document.querySelector(".product-list").innerHTML = "<p>Your cart is empty.</p>";
+    document.querySelector(".product-cart").innerHTML = "<p>Your cart is empty.</p>";
 
     // Hides the footer if it exists
     const footer = document.querySelector(".cart-footer");
@@ -19,7 +19,7 @@ function renderCartContents() {
 
   const uniqueItems = consolidateItems(cartItems);
   const htmlItems = uniqueItems.map((item) => cartItemTemplate(item));
-  document.querySelector(".product-list").innerHTML = htmlItems.join("");
+  document.querySelector(".product-cart").innerHTML = htmlItems.join("");
 
   const total = uniqueItems.reduce((sum, item) => sum + item.TotalPrice, 0);
   document.querySelector(".cart-total").textContent = `Total: $${total.toFixed(2)}`;
