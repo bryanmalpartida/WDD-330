@@ -213,7 +213,6 @@ button {
 .product-list {
   display: flex;
   flex-flow: row wrap;
-  flex-direction: column;
   list-style-type: none;
   align-items: stretch;
 }
