@@ -1,13 +1,13 @@
-import ProductData from './ProductData.mjs';
-import ProductList from './ProductList.mjs';
-import { loadHeaderFooter, getParam, updateCartCount} from './utils.mjs';
+//import ProductData from './ProductData.mjs';
+//import ProductList from './ProductList.mjs';
+//import { loadHeaderFooter, getParam, updateCartCount} from './utils.mjs';
 
-loadHeaderFooter();
+//loadHeaderFooter();
 
-const category = getParam("category");
-const dataSource = new ProductData();
-const element = document.querySelector(".product-list");
-const listing = new ProductList(category, dataSource, element);
+//const category = getParam("category");
+//const dataSource = new ProductData();
+//const element = document.querySelector(".product-list");
+//const listing = new ProductList(category, dataSource, element);
 
-listing.init();
-document.addEventListener("DOMContentLoaded", updateCartCount);
+//listing.init();
+//document.addEventListener("DOMContentLoaded", updateCartCount);
