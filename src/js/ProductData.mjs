@@ -21,3 +21,8 @@ export default class ProductData {
     return products.find((item) => item.Id === id);
   }
 }
+
+constructor(category) {
+  this.category = category;
+  this.path = `../json/${this.category}.json`; 
+}
